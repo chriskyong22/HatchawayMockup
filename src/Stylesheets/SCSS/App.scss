@@ -3,6 +3,15 @@
     padding: 0px;
 }
 
+@mixin flexRow() {
+    display: flex;
+}
+
+@mixin flexColumn() {
+    display: flex;
+    flex-direction: column;
+}
+
 @font-face {
     font-family: 'Raleway';
     font-style: normal;
@@ -48,17 +57,14 @@ body {
     height: 100vh;
     padding: min(6rem, 10%) 20%;
     background-color: var(--primary-background-color);
-    display: flex;
-    flex-direction: column;
+    @include flexColumn();
 }
 
 .content-container {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid transparent;
     border-radius: 12px;
     background-color: var(--secondary-background-color);
     overflow: hidden;
+    @include flexColumn();
 }
 
 .search {
@@ -104,8 +110,7 @@ label {
 .card-container {
     overflow-y: auto;
     scrollbar-width: none;
-    display: flex;
-    flex-direction: column;
+    @include flexColumn();
 }
 
 .card {
@@ -131,10 +136,9 @@ label {
     }
 
     .card__content {
-        display: flex;
-        flex-direction: column;
         gap: 1rem;
         margin-bottom: 1rem;
+        @include flexColumn();
     }
 
     .card__extended-info-button {
@@ -164,8 +168,8 @@ label {
 }
 
 .tags {
-    display: flex;
     gap: 0.25rem;
+    @include flexRow();
 }
 
 .tag {
