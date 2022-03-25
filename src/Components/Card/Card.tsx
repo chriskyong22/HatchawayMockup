@@ -1,6 +1,6 @@
 import react, { useState } from "react";
 import { Student, Students } from "../../Models/Student"
-import { getAverage } from "../../Utilities/Helper"
+import { getAverage } from "../../Utilities/StudentHelpers"
 import { Tag } from "../Tag/Tag"
 
 interface CardProps { 

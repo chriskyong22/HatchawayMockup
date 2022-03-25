@@ -8,7 +8,7 @@ interface TagProps {
 
 export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
 
-    const [tags, setTags] = useState<string[]>([]);
+    const [tags, setTags] = useState<string[]>(currentStudent.tags);
 
     const handleKeyPress = (event: react.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {

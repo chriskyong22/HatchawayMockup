@@ -1,8 +1,4 @@
 import { Student } from "../Models/Student";
-export const getAverage = (grades: string[]) => {
-    let total = grades.reduce((total, grade) => parseInt(grade) + total, 0);
-    return total / grades.length;
-}
 
 const filterByName = (student: Student, filterName: string) => {
     const FULL_NAME = `${student.firstName} ${student.lastName}`;

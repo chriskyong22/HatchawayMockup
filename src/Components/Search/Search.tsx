@@ -4,18 +4,18 @@ import { Students } from "../../Models/Student";
 interface SearchProps {
     label: string;
     id: string;
-    searchFunction: (value: string) => void;
+    setFilterCallback: (value: string) => void;
 }
 
 export const Search: React.FC<SearchProps> = (
         { 
             label,
             id,
-            searchFunction, 
+            setFilterCallback, 
         }
     ) => {
     const handleSearch = (event: react.ChangeEvent<HTMLInputElement>) => {
-        searchFunction(event.target.value);
+        setFilterCallback(event.target.value);
     }
 
     return (

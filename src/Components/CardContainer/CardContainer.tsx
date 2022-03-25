@@ -3,7 +3,7 @@ import { fetchData } from "../../Services/API"
 import { Students } from "../../Models/Student"
 import { Card } from "../Card/Card";
 import { Search } from "../Search/Search";
-import { FILTER_FUNCTIONS } from "../../Utilities/Helper";
+import { FILTER_FUNCTIONS } from "../../Utilities/SearchFilters";
 
 export const CardContainer = () => {
 
@@ -24,14 +24,14 @@ export const CardContainer = () => {
         name: "",
     });
 
-    const searchByName = (name: string) => {
+    const setNameFilter = (name: string) => {
         setFilter((oldFilter) => ({
             ...oldFilter,
             name
         }))
     }
 
-    const searchByTag = (tag: string) => {
+    const setTagFilter = (tag: string) => {
         setFilter((oldFilter) => ({
             ...oldFilter,
             tag
@@ -58,12 +58,12 @@ export const CardContainer = () => {
             <Search 
                 label="Search by name"
                 id="search-by-name"
-                searchFunction={searchByName}
+                setFilterCallback={setNameFilter}
             />
             <Search 
                 label="Search by tag"
                 id="search-by-tag"
-                searchFunction={searchByTag}
+                setFilterCallback={setTagFilter}
             />
             <div className="card-container">
                 {
