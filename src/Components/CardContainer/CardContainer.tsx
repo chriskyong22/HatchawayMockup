@@ -67,11 +67,11 @@ export const CardContainer = () => {
                 setFilterCallback={setTagFilter}
                 borderColorClass={"input__border--secondary"}
             />
-            <div className="card-container">
+            <section className="card-container">
                 {
                     displayedStudents.map((student) => {
                         return (
-                            <div 
+                            <article 
                                 className="card" 
                                 key={student.id}
                             >
@@ -79,11 +79,11 @@ export const CardContainer = () => {
                                     student={student} 
                                     updateStudents={setAllStudents}
                                 />
-                            </div>
+                            </article>
                         )
                     })
                 }
-            </div>
+            </section>
         </div>
     )
 }

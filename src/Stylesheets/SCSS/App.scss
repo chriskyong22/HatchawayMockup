@@ -156,6 +156,12 @@ label {
 
     .card__extended-info-button:hover,
     .card__extended-info-button:focus {
+        // Note, since we are setting opacity 
+        // on focus as well, then when a user
+        // clicks on a button, it will stay 
+        // focus and then opacity: 1 
+        // If we only do this for :hover, then 
+        // it is not inclusive to SRs
         opacity: 1;
     }
 }

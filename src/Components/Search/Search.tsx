@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface SearchProps {
     label: string;
@@ -15,7 +15,11 @@ export const Search: React.FC<SearchProps> = (
             borderColorClass 
         }
     ) => {
+        
+    const [searchValue, setSearchValue] = useState('');
+
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(event.target.value);
         setFilterCallback(event.target.value);
     }
 
@@ -28,6 +32,7 @@ export const Search: React.FC<SearchProps> = (
                 id={id}
                 className={`input ${borderColorClass}`}
                 placeholder={label}
+                value={searchValue}
                 onChange={handleSearch}
             />
         </div>

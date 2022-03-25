@@ -11,6 +11,9 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
 
     const [showExtended, setShowExtended] = useState(false);
+    const toggleExtend = () => {
+        setShowExtended(oldExtended => !oldExtended);
+    }
 
     const renderTests = (): JSX.Element => {
         return (
@@ -35,7 +38,7 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
             <img 
                 className="card__image" 
                 src={student.pic} 
-                alt=""
+                alt={`Picture of ${student.firstName} ${student.lastName}`} 
             />
             <section className="card__content">
                 <h2 className="card__title margin-top-1rem">
@@ -67,7 +70,7 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
             </section>
             <button 
                 className="card__extended-info-button"
-                onClick={(_event) => setShowExtended((oldShowExtend) => !oldShowExtend)}
+                onClick={toggleExtend}
                 aria-expanded={showExtended}
                 aria-label={`Show extended info of ${student.firstName} ${student.lastName}`}
             >
