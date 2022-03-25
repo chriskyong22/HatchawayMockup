@@ -4,13 +4,15 @@ interface SearchProps {
     label: string;
     id: string;
     setFilterCallback: (value: string) => void;
+    borderColorClass: string;
 }
 
 export const Search: React.FC<SearchProps> = (
         { 
             label,
             id,
-            setFilterCallback, 
+            setFilterCallback,
+            borderColorClass 
         }
     ) => {
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,13 +20,13 @@ export const Search: React.FC<SearchProps> = (
     }
 
     return (
-        <div className="search">
+        <div className={`search`}>
             <label htmlFor={id}>
                 {label}
             </label>
             <input 
                 id={id}
-                className="input" 
+                className={`input ${borderColorClass}`}
                 placeholder={label}
                 onChange={handleSearch}
             />

@@ -29,7 +29,7 @@ body {
 
 .layout {
     height: 100vh;
-    padding: 6rem 20%;
+    padding: min(6rem, 10%) 20%;
     background-color: #efefef;
     font-family: 'Raleway', 'Courier New', Courier, monospace;
     display: flex;
@@ -48,7 +48,6 @@ body {
 .search {
     margin-top: 1rem;
     padding-left: 0.5rem;
-    margin-bottom: 0px;
 }
 
 .input {
@@ -62,13 +61,22 @@ body {
 
 .input:focus,
 .input:active {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #000000;
 }
 
-.input--smaller {
+.input--tag {
     font-size: 1rem;
     width: 13rem;
     padding-bottom: 0.5rem;
+}
+
+.input__border--secondary {
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.input__border--secondary:focus,
+.input__border--secondary:active {
+    border-bottom: 2px solid #b0b0b0;
 }
 
 label {
@@ -126,7 +134,8 @@ label {
         padding: 0px;
         opacity: 0.6;
     }
-    .card__extended-info-button:hover {
+    .card__extended-info-button:hover,
+    .card__extended-info-button:focus {
         opacity: 1;
     }
 }

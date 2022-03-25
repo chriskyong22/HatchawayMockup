@@ -59,11 +59,13 @@ export const CardContainer = () => {
                 label="Search by name"
                 id="search-by-name"
                 setFilterCallback={setNameFilter}
+                borderColorClass={""}
             />
             <MemoSearch 
                 label="Search by tag"
                 id="search-by-tag"
                 setFilterCallback={setTagFilter}
+                borderColorClass={"input__border--secondary"}
             />
             <div className="card-container">
                 {

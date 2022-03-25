@@ -47,7 +47,7 @@ export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
             </label>
             <input 
                 id="add-a-tag"
-                className="input input--smaller margin-top-1rem"
+                className="input input--tag margin-top-1rem"
                 placeholder="Add a tag"
                 onKeyDown={handleKeyPress}
             />
