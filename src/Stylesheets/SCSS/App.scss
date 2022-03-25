@@ -1,0 +1,151 @@
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/raleway/v26/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCFPrEHJA.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, img, div, p, h2 {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    scroll-behavior: smooth;
+    line-height: 1.5;
+}
+
+.layout {
+    height: 100vh;
+    padding: 6rem 20%;
+    background-color: #efefef;
+    font-family: 'Raleway', 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.search {
+    margin-top: 1rem;
+    padding-left: 0.5rem;
+    margin-bottom: 0px;
+}
+
+.input {
+    font-size: 1.25rem;
+    width: 99%;
+    padding-bottom: 0.75rem;
+    border: none;
+    border-bottom: 2px solid #f6f6f6;
+    outline: none;
+}
+
+.input:focus,
+.input:active {
+    border-bottom: 2px solid black;
+}
+
+.input--smaller {
+    font-size: 1rem;
+    width: 50%;
+    padding-bottom: 0.5rem;
+}
+
+label {
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+}
+
+.card-container {
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    display: flex;
+    justify-items: center;
+    padding: 0px 2rem;
+    gap: 3rem;
+    border-bottom: 2px solid #f6f6f6;
+
+    .card__image {
+        margin: 2rem 0px;
+        width: 140px;
+        height: 130px;
+        border: 1px solid lightgray;
+        border-radius: 50%;
+    }
+
+    .card__title {
+        margin-top: 1rem;
+        font-size: 3rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.10rem;
+    }
+
+    .card__content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .card__extended-info-button {
+        // Used Mono font-family to get same + and - widths
+        font-family: 'Menlo', 'Lucida Console', 'Monaco', 'Consolas', monospace;
+        margin-left: auto;
+        font-size: 4rem;
+        font-weight: 900;
+        height: 4rem;
+        border: none;
+        background-color: transparent;
+        padding: 0px;
+    }
+}
+
+.student__info {
+    font-size: 1rem;
+    margin-left: 2rem;
+}
+
+.student__extended-info {
+    font-size: 1rem;
+}
+
+.tags {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.tag {
+    font-size: 1rem;
+    padding: 0.5em;
+    background-color: #dcdcdc;
+    border-radius: 4px;
+}
+
+/* Utilities Classes */
+.margin-top-1rem {
+    margin-top: 1rem;
+}
+
+.preserve-whitespace {
+    white-space: pre;
+}
