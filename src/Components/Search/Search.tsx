@@ -20,7 +20,7 @@ export const Search: React.FC<SearchProps> = (
     }
 
     return (
-        <div className={`search`}>
+        <div className={`search margin-top-1rem`}>
             <label htmlFor={id}>
                 {label}
             </label>

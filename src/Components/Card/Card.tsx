@@ -12,6 +12,24 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
 
     const [showExtended, setShowExtended] = useState(false);
 
+    const renderTests = (): JSX.Element => {
+        return (
+            <div className="student__extended-info margin-top-1rem preserve-whitespace">
+                {
+                    student.grades.map((grade, index) => {
+                        return (
+                            <p 
+                                key={`${student.id} ${index}`}
+                            >
+                                {`Test ${index + 1}:    ${grade}%`}
+                            </p>
+                        )
+                    })
+                }
+            </div>
+        )
+    }
+
     return (
         <>
             <img 
@@ -20,7 +38,7 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
                 alt=""
             />
             <section className="card__content">
-                <h2 className="card__title">
+                <h2 className="card__title margin-top-1rem">
                     {`${student.firstName}  ${student.lastName}`}
                 </h2>
                 <article className="student__info">
@@ -38,19 +56,7 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
                     </p>
                     {
                         showExtended 
-                        ? <div className="student__extended-info margin-top-1rem preserve-whitespace">
-                            {
-                                student.grades.map((grade, index) => {
-                                    return (
-                                        <p 
-                                            key={`${student.id} ${index}`}
-                                        >
-                                            {`Test ${index + 1}:    ${grade}%`}
-                                        </p>
-                                    )
-                                })
-                            }
-                          </div>
+                        ? renderTests()
                         : <></>
                     }
                     <Tag
