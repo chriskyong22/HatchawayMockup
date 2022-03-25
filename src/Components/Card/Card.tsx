@@ -1,11 +1,11 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import { Student, Students } from "../../Models/Student"
 import { getAverage } from "../../Utilities/StudentHelpers"
 import { Tag } from "../Tag/Tag"
 
 interface CardProps { 
     student: Student;
-    updateStudents: react.Dispatch<react.SetStateAction<Students>>;
+    updateStudents: React.Dispatch<React.SetStateAction<Students>>;
 }
 
 export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
@@ -70,3 +70,5 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
         </>
     )
 }
+
+export const MemoCard = React.memo(Card);

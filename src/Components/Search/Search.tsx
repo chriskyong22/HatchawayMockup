@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
 import { Students } from "../../Models/Student";
 
 interface SearchProps {
@@ -14,7 +14,7 @@ export const Search: React.FC<SearchProps> = (
             setFilterCallback, 
         }
     ) => {
-    const handleSearch = (event: react.ChangeEvent<HTMLInputElement>) => {
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFilterCallback(event.target.value);
     }
 
@@ -32,3 +32,5 @@ export const Search: React.FC<SearchProps> = (
         </div>
     )
 }
+
+export const MemoSearch = React.memo(Search);

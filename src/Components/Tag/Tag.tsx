@@ -1,8 +1,8 @@
-import react, { useState } from "react"
+import React, { useState } from "react"
 import { Student, Students } from "../../Models/Student";
 interface TagProps {
     currentStudent: Student;
-    updateStudents: react.Dispatch<react.SetStateAction<Students>>;
+    updateStudents: React.Dispatch<React.SetStateAction<Students>>;
 }
 
 
@@ -10,7 +10,7 @@ export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
 
     const [tags, setTags] = useState<string[]>(currentStudent.tags);
 
-    const handleKeyPress = (event: react.KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             const newTag =  event.currentTarget.value;
             setTags((oldTags) => [...oldTags, newTag]);

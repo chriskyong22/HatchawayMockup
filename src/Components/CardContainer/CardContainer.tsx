@@ -1,8 +1,8 @@
-import react, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { fetchData } from "../../Services/API"
 import { Students } from "../../Models/Student"
-import { Card } from "../Card/Card";
-import { Search } from "../Search/Search";
+import { MemoCard } from "../Card/Card";
+import { MemoSearch } from "../Search/Search";
 import { FILTER_FUNCTIONS } from "../../Utilities/SearchFilters";
 
 export const CardContainer = () => {
@@ -24,19 +24,19 @@ export const CardContainer = () => {
         name: "",
     });
 
-    const setNameFilter = (name: string) => {
+    const setNameFilter = useCallback((name: string) => {
         setFilter((oldFilter) => ({
             ...oldFilter,
             name
         }))
-    }
+    }, [setFilter]);
 
-    const setTagFilter = (tag: string) => {
+    const setTagFilter = useCallback((tag: string) => {
         setFilter((oldFilter) => ({
             ...oldFilter,
             tag
         }))
-    }
+    }, [setFilter]);
     
     useEffect(() => {
         const updateDisplayedStudents = () => {
@@ -55,12 +55,12 @@ export const CardContainer = () => {
 
     return (
         <div className="content-container">
-            <Search 
+            <MemoSearch 
                 label="Search by name"
                 id="search-by-name"
                 setFilterCallback={setNameFilter}
             />
-            <Search 
+            <MemoSearch 
                 label="Search by tag"
                 id="search-by-tag"
                 setFilterCallback={setTagFilter}
@@ -73,7 +73,7 @@ export const CardContainer = () => {
                                 className="card" 
                                 key={student.id}
                             >
-                                <Card 
+                                <MemoCard 
                                     student={student} 
                                     updateStudents={setAllStudents}
                                 />
