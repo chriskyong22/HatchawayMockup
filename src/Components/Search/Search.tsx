@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Students } from "../../Models/Student";
+import React from "react";
 
 interface SearchProps {
     label: string;

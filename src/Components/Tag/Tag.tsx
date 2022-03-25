@@ -5,7 +5,6 @@ interface TagProps {
     updateStudents: React.Dispatch<React.SetStateAction<Students>>;
 }
 
-
 export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
 
     const [tags, setTags] = useState<string[]>(currentStudent.tags);
