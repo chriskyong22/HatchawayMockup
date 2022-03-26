@@ -58,10 +58,10 @@ export const CardContainer = () => {
 
     if (error) {
         return (
-            <>
+            <p>
                 Error, retrieving the data from the API. Please refresh.
-            </>
-        )
+            </p>
+        );
     }
 
     return (
@@ -91,10 +91,10 @@ export const CardContainer = () => {
                                     updateStudents={setAllStudents}
                                 />
                             </article>
-                        )
+                        );
                     })
                 }
             </section>
         </div>
-    )
+    );
 }

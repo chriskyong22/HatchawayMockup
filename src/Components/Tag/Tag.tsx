@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Student, Students } from "../../Models/Student";
+
 interface TagProps {
     currentStudent: Student;
     updateStudents: React.Dispatch<React.SetStateAction<Students>>;
@@ -16,8 +17,8 @@ export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
                     if (student.id === currentStudent.id) {
                         return ({
                             ...student,
-                            tags: [...student.tags, tag]
-                        })
+                            tags: [...student.tags, tag],
+                        });
                     }
                     return student;
                 })
@@ -36,7 +37,7 @@ export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
                     {tag} 
                 </p>
             ))
-        )
+        );
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -2,7 +2,6 @@ import React from "react"
 import { render, screen, cleanup, fireEvent } from "@testing-library/react"
 import { Tag } from "../Tag/Tag"
 import { Students } from "../../Models/Student"
-import { getAverage } from "../../Utilities/StudentHelpers"
 
 const student = {
     "city": "Fushe-Muhurr",

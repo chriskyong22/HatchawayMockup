@@ -10,6 +10,7 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
 
+    const FULL_NAME = `${student.firstName} ${student.lastName}`;
     const [showExtended, setShowExtended] = useState(false);
     const toggleExtend = () => {
         setShowExtended(oldExtended => !oldExtended);
@@ -29,11 +30,11 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
                             >
                                 {`Test ${index + 1}:    ${grade}%`}
                             </p>
-                        )
+                        );
                     })
                 }
             </div>
-        )
+        );
     }
 
     return (
@@ -42,11 +43,11 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
                 data-testid="card-img"
                 className="card__image" 
                 src={student.pic} 
-                alt={`Picture of ${student.firstName} ${student.lastName}`} 
+                alt={`Picture of ${FULL_NAME}`} 
             />
             <section className="card__content">
                 <h2 data-testid="card-title" className="card__title margin-top-1rem">
-                    {`${student.firstName}  ${student.lastName}`}
+                    {FULL_NAME}
                 </h2>
                 <article data-testid="card-student-info" className="student__info">
                     <p>
@@ -82,7 +83,7 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
                 {showExtended ? "-" : "+"}
             </button>
         </>
-    )
+    );
 }
 
 export const MemoCard = React.memo(Card);
