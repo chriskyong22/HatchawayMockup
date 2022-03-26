@@ -7,12 +7,10 @@ interface TagProps {
 
 export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
 
-    const [tags, setTags] = useState<string[]>(currentStudent.tags);
     const [tag, setTag] = useState('');
 
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
-            setTags((oldTags) => [...oldTags, tag]);
             updateStudents((oldStudents) => (
                 oldStudents.map((student) => {
                     if (student.id === currentStudent.id) {
@@ -28,6 +26,19 @@ export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
         }
     }
 
+    const renderTags = (): JSX.Element[] => {
+        return (
+            currentStudent.tags.map((tag, index) => (
+                <p 
+                    className="tag" 
+                    key={`${currentStudent.id} ${index} ${tag}`}
+                >
+                    {tag} 
+                </p>
+            ))
+        )
+    }
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTag(event.currentTarget.value);
     }
@@ -35,16 +46,7 @@ export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
     return (
         <>
             <div data-testid="tags" className="tags">
-                {
-                    tags.map((tag, index) => (
-                        <p 
-                            className="tag" 
-                            key={`${currentStudent.id} ${index} ${tag}`}
-                        >
-                            {tag} 
-                        </p>
-                    ))
-                }
+                {renderTags()}
             </div>
             <label htmlFor="add-a-tag">
                 Add a tag

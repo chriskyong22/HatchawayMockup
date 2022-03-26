@@ -52,7 +52,7 @@ export const CardContainer = () => {
             setDisplayedStudents(FILTERED_STUDENTS);
         }
         updateDisplayedStudents();
-    }, [filter]);
+    }, [filter, allStudents]);
 
     return (
         <div className="content-container">
