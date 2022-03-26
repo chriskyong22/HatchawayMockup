@@ -34,7 +34,7 @@ export const Tag: React.FC<TagProps> = ({ currentStudent, updateStudents }) => {
 
     return (
         <>
-            <div className="tags">
+            <div data-testid="tags" className="tags">
                 {
                     tags.map((tag, index) => (
                         <p 
