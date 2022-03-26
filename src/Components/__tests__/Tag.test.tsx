@@ -59,7 +59,7 @@ test('Check if tag input allows input', () => {
     expect(tagInput).toHaveValue("A")
 })
 
-test('Check if Tag added is displayed', () => {
+test('Check if Tag input is cleared after ENTER KEY is pressed', () => {
     const VALUE = "A";
     render(<Tag currentStudent={student} updateStudents={updateStudentsMock}/>)
     const tagInput = screen.getByLabelText('Add a tag');
@@ -80,11 +80,29 @@ test('Check if Tag added is displayed', () => {
         )
     }
     expect(tagInput).toHaveValue('');
-    const tagsContainer = screen.queryByTestId('tags');
-    expect(tagsContainer).not.toBeNull();
-    if (tagsContainer) {
-        const tags = Array.from(tagsContainer.childNodes);
-        expect(tags.length).toBe(1);
-        expect(tags[0]).toHaveTextContent(VALUE);
+})
+
+test('Check if updateStudents is called with the value after ENTER KEY is pressed', () => {
+    const VALUE = "A";
+    const updateStudentsMock = jest.fn((_inputValue) => _inputValue)
+    render(<Tag currentStudent={student} updateStudents={updateStudentsMock}/>)
+    const tagInput = screen.getByLabelText('Add a tag');
+    if (tagInput) {
+        fireEvent.change(
+            tagInput, 
+            {
+                target: {value: 'A'}
+            }
+        )
+        fireEvent.keyDown(
+            tagInput, 
+            {
+                key: "Enter",
+                code: "Enter",
+                charCode: 13
+            }
+        )
     }
+    expect(tagInput).toHaveValue('');
+    expect(updateStudentsMock.mock.calls.length).toBe(1);
 })

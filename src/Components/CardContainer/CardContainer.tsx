@@ -9,14 +9,16 @@ export const CardContainer = () => {
 
     const [allStudents, setAllStudents] = useState<Students>([]);
     const [displayedStudents, setDisplayedStudents] = useState<Students>([]);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         fetchData().then((data) => {
-            console.log(data);
             setDisplayedStudents(data);
             setAllStudents(data);
+        }).catch((_error) => {
+            setError(true);
         })
-    }, [fetchData, setDisplayedStudents])
+    }, [fetchData, setDisplayedStudents, setError])
 
     const [filter, setFilter] = useState<{
         [key: string]: string;
@@ -24,20 +26,6 @@ export const CardContainer = () => {
         tag: "",
         name: "",
     });
-
-    const setNameFilter = useCallback((name: string) => {
-        setFilter((oldFilter) => ({
-            ...oldFilter,
-            name
-        }))
-    }, [setFilter]);
-
-    const setTagFilter = useCallback((tag: string) => {
-        setFilter((oldFilter) => ({
-            ...oldFilter,
-            tag
-        }))
-    }, [setFilter]);
     
     useEffect(() => {
         const updateDisplayedStudents = () => {
@@ -53,6 +41,28 @@ export const CardContainer = () => {
         }
         updateDisplayedStudents();
     }, [filter, allStudents]);
+
+    const setNameFilter = useCallback((name: string) => {
+        setFilter((oldFilter) => ({
+            ...oldFilter,
+            name
+        }))
+    }, [setFilter]);
+
+    const setTagFilter = useCallback((tag: string) => {
+        setFilter((oldFilter) => ({
+            ...oldFilter,
+            tag
+        }))
+    }, [setFilter]);
+
+    if (error) {
+        return (
+            <>
+                Error, retrieving the data from the API. Please refresh.
+            </>
+        )
+    }
 
     return (
         <div className="content-container">
