@@ -58,3 +58,33 @@ test('Check if tag input allows input', () => {
     }
     expect(tagInput).toHaveValue("A")
 })
+
+test('Check if Tag added is displayed', () => {
+    const VALUE = "A";
+    render(<Tag currentStudent={student} updateStudents={updateStudentsMock}/>)
+    const tagInput = screen.getByLabelText('Add a tag');
+    if (tagInput) {
+        fireEvent.change(
+            tagInput, 
+            {
+                target: {value: VALUE}
+            }
+        )
+        fireEvent.keyDown(
+            tagInput, 
+            {
+                key: "Enter",
+                code: "Enter",
+                charCode: 13
+            }
+        )
+    }
+    expect(tagInput).toHaveValue('');
+    const tagsContainer = screen.queryByTestId('tags');
+    expect(tagsContainer).not.toBeNull();
+    if (tagsContainer) {
+        const tags = Array.from(tagsContainer.childNodes);
+        expect(tags.length).toBe(1);
+        expect(tags[0]).toHaveTextContent(VALUE);
+    }
+})
