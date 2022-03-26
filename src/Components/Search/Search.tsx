@@ -15,7 +15,7 @@ export const Search: React.FC<SearchProps> = (
             borderColorClass 
         }
     ) => {
-        
+
     const [searchValue, setSearchValue] = useState('');
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +28,8 @@ export const Search: React.FC<SearchProps> = (
             <label htmlFor={id}>
                 {label}
             </label>
-            <input 
+            <input
+                data-testid={id} 
                 id={id}
                 className={`input ${borderColorClass}`}
                 placeholder={label}

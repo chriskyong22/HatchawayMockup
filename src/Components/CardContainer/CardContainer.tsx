@@ -12,6 +12,7 @@ export const CardContainer = () => {
 
     useEffect(() => {
         fetchData().then((data) => {
+            console.log(data);
             setDisplayedStudents(data);
             setAllStudents(data);
         })

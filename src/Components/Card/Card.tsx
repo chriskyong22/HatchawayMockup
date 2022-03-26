@@ -17,7 +17,10 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
 
     const renderTests = (): JSX.Element => {
         return (
-            <div className="student__extended-info margin-top-1rem preserve-whitespace">
+            <div 
+                data-testid="extended-info-section"
+                className="student__extended-info margin-top-1rem preserve-whitespace"
+            >
                 {
                     student.grades.map((grade, index) => {
                         return (
@@ -36,15 +39,16 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
     return (
         <>
             <img 
+                data-testid="card-img"
                 className="card__image" 
                 src={student.pic} 
                 alt={`Picture of ${student.firstName} ${student.lastName}`} 
             />
             <section className="card__content">
-                <h2 className="card__title margin-top-1rem">
+                <h2 data-testid="card-title" className="card__title margin-top-1rem">
                     {`${student.firstName}  ${student.lastName}`}
                 </h2>
-                <article className="student__info">
+                <article data-testid="card-student-info" className="student__info">
                     <p>
                         {`Email: ${student.email}`}
                     </p>
@@ -69,6 +73,7 @@ export const Card: React.FC<CardProps> = ({ student, updateStudents }) => {
                 </article>
             </section>
             <button 
+                data-testid="extended-info-button"
                 className="card__extended-info-button"
                 onClick={toggleExtend}
                 aria-expanded={showExtended}
